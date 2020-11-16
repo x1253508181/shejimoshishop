@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
  * @Description: com.itheima.shop.user.SessionThreadLocal
  ****/
 @Component
-public class SessionThreadLocal {
+public class SessionThreadLocal2 {
 
     //1.创建一个ThreadLocal实现存储线程下共享的对象
     private static ThreadLocal<Session> sessions = new ThreadLocal<Session>();

@@ -6,6 +6,7 @@ import com.itheima.shop.decorator.MoneySum;
 import com.itheima.shop.domain.Order;
 import com.itheima.shop.service.ItemService;
 import com.itheima.shop.service.OrderService;
+import com.itheima.shop.user.Session;
 import com.itheima.shop.user.ThreadSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -38,6 +39,7 @@ public class OrderServiceImpl implements OrderService {
     @Autowired
     private DecoratorMoneySum vipMoneySum;
 
+
     /***
      * 添加订单
      * @param order
@@ -45,6 +47,9 @@ public class OrderServiceImpl implements OrderService {
     @Override
     public int add(Order order) {
         //order.setUsername("wangwu");
+        Session session = threadSession.get();
+        String name = session.getUsername();
+        order.setUsername(name);
         order.setPaymoney(100); //结算价格
         order.setMoney(100);  //订单价格
 

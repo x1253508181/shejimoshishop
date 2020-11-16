@@ -13,6 +13,6 @@ public class SessionShare extends Session {
 
     @Override
     public void handler() {
-        System.out.println("共享信息！");
+        System.out.println("额外扩展！");
     }
 }

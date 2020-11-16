@@ -1,5 +1,6 @@
 package com.itheima.shop.interceptor;
 
+import com.itheima.shop.user.Session;
 import com.itheima.shop.user.SessionShare;
 import com.itheima.shop.user.ThreadSession;
 import com.itheima.shop.util.JwtTokenUtil;
@@ -43,13 +44,15 @@ public class AuthorizationInterceptor implements HandlerInterceptor {
                 //1.封装需要共享的信息[Session]
                 //2.创建一个对象继承封装信息，每次共享该对象 (不需要共享，则可以创建另外一个对象继承它)
                 //3.创建共享管理对象，实现共享信息的增加、获取、移除功能
-                threadSession.add(new SessionShare(
-                      tokenMap.get("username").toString(),
-                      tokenMap.get("name").toString(),
-                      tokenMap.get("sex").toString(),
-                      tokenMap.get("role").toString(),
-                      Integer.valueOf(tokenMap.get("level").toString())
-                ));
+
+                Session session = new SessionShare(
+                        tokenMap.get("username").toString(),
+                        tokenMap.get("name").toString(),
+                        tokenMap.get("sex").toString(),
+                        tokenMap.get("role").toString(),
+                        Integer.valueOf(tokenMap.get("level").toString()));
+                threadSession.add(session);
+
                 return true;
             }
         } catch (Exception e) {
