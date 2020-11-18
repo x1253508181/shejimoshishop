@@ -16,6 +16,7 @@ upload:
 #等级和策略实例的映射关系
 strategy:
   vipmap:
+    0: vip0
     1: vip1
     2: vip2
     3: vip3

@@ -7,7 +7,7 @@ package com.itheima.shop.strategy;
 public interface Strategy {
 
     /***
-     * 金额计算
+     * 策略要做的事情 计算金额
      */
     Integer money(Integer money);
 }

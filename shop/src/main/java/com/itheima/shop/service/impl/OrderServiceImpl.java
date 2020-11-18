@@ -1,8 +1,8 @@
 package com.itheima.shop.service.impl;
 
 import com.itheima.shop.dao.OrderDao;
-import com.itheima.shop.decorator.DecoratorMoneySum;
-import com.itheima.shop.decorator.MoneySum;
+import com.itheima.shop.decorator.shop.DecoratorMoneySum;
+import com.itheima.shop.decorator.shop.MoneySum;
 import com.itheima.shop.domain.Order;
 import com.itheima.shop.service.ItemService;
 import com.itheima.shop.service.OrderService;
@@ -55,10 +55,12 @@ public class OrderServiceImpl implements OrderService {
 
         //获取用户信息
         order.setUsername(threadSession.get().getUsername());
-        //装饰者模式嵌套运算计算价格
+
+
         fullMoneySum.setMoneySum(orderMoneySum);
+        fullMoneySum.sum(order);
+
         vipMoneySum.setMoneySum(fullMoneySum);
-        //价格计算
         vipMoneySum.sum(order);
 
         //修改库存
@@ -76,13 +78,10 @@ public class OrderServiceImpl implements OrderService {
     public void cancelOrder(String id) {
         //修改订单状态
         Order order = orderDao.findById(id);
-        orderDao.modifyStatus(id,2);
+        orderDao.modifyStatus(id, 2);
 
         //改变订单状态
     }
-
-
-
 
 
 }

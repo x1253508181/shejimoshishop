@@ -1,4 +1,5 @@
 package com.itheima.shop.domain;
+import com.itheima.shop.strategy.shop.MoneyStrategy;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -26,4 +27,7 @@ public class Order implements Serializable {
     private Integer num;
     private String username;
     private String couponsId;
+
+    //策略對象
+    private MoneyStrategy moneyStrategy;
 }
